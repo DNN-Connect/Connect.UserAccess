@@ -121,11 +121,25 @@ export class ManageUser extends React.Component<IManageUserProps, IManageUserSta
                     onToggleStatus={(role: IRole, e: any) => this.toggleRoleStatus(role, e)} />
             );
         }
-        var groupDropdown = this.props.roleGroups.map((item) => {
+        var groupDropdownOptions = this.props.roleGroups.map((item) => {
             return (
                 <option value={item.RoleGroupID} key={item.RoleGroupID}>{item.RoleGroupName}</option>
             )
         });
+        var groupDropdown: JSX.Element = <span />;
+        if (this.props.roleGroups.length > 2) {
+            groupDropdown = (
+                <div className="row">
+                    <div className="col-sm-12">
+                        <select className="form-control"
+                            value={this.state.currentRoleGroupId}
+                            onChange={e => this.changeRoleGroup(e.target as HTMLSelectElement)}>
+                            {groupDropdownOptions}
+                        </select>
+                    </div>
+                </div>
+            );
+        }
         return (
             <div className="modal fade" ref="dialog" role="dialog" aria-labelledby="cmModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
@@ -181,15 +195,7 @@ export class ManageUser extends React.Component<IManageUserProps, IManageUserSta
                                     </dl>
                                 </div>
                             </div>
-                            <div className="row">
-                                <div className="col-sm-12">
-                                    <select className="form-control"
-                                        value={this.state.currentRoleGroupId}
-                                        onChange={e => this.changeRoleGroup(e.target as HTMLSelectElement)}>
-                                        {groupDropdown}
-                                    </select>
-                                </div>
-                            </div>
+                            {groupDropdown}
                             {roles}
                         </div>
                         <div className="modal-footer">

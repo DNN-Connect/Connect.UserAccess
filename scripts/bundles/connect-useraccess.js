@@ -22330,9 +22330,15 @@ var ManageUser = (function (_super) {
         else {
             roles = (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__RoleGrid__["a" /* RoleGrid */], { localization: this.props.localization, roles: this.state.roles, onToggleStatus: function (role, e) { return _this.toggleRoleStatus(role, e); } }));
         }
-        var groupDropdown = this.props.roleGroups.map(function (item) {
+        var groupDropdownOptions = this.props.roleGroups.map(function (item) {
             return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("option", { value: item.RoleGroupID, key: item.RoleGroupID }, item.RoleGroupName));
         });
+        var groupDropdown = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null);
+        if (this.props.roleGroups.length > 2) {
+            groupDropdown = (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "row" },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-12" },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("select", { className: "form-control", value: this.state.currentRoleGroupId, onChange: function (e) { return _this.changeRoleGroup(e.target); } }, groupDropdownOptions))));
+        }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "modal fade", ref: "dialog", role: "dialog", "aria-labelledby": "cmModalLabel", "aria-hidden": "true" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "modal-dialog" },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "modal-content" },
@@ -22367,9 +22373,7 @@ var ManageUser = (function (_super) {
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("dt", null, "UpdatePassword"),
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("dd", null,
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__CheckBox__["a" /* CheckBox */], { propertyName: "UpdatePassword", value: this.state.user.UpdatePassword, onClick: function (prop, val) { return _this.toggleUserProperty(prop, val); } }))))),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "row" },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-12" },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("select", { className: "form-control", value: this.state.currentRoleGroupId, onChange: function (e) { return _this.changeRoleGroup(e.target); } }, groupDropdown))),
+                        groupDropdown,
                         roles),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "modal-footer" },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: "#", id: "cmdManageUserCancel", className: "btn btn-default", "data-dismiss": "modal" }, this.props.localization.get("Close")))))));
