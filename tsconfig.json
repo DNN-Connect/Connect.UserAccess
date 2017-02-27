@@ -14,8 +14,8 @@
         "typings/index.d.ts"
     ],
     "include": [
-        "scripts/src/**/*.ts",
-        "scripts/src/**/*.tsx"
+        "src/**/*.ts",
+        "src/**/*.tsx"
     ],
     "exclude": [
         "node_modules"

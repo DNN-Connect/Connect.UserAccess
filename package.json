@@ -32,8 +32,8 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "node_modules\\.bin\\webpack",
-    "watch": "node_modules\\.bin\\webpack --watch"
+    "build": "node_modules\\.bin\\webpack --progress --colors",
+    "watch": "node_modules\\.bin\\webpack --progress --colors --watch"
   },
   "repository": {
     "type": "git",
@@ -70,7 +70,7 @@
     "react-dom": "^15.4.2",
     "ts-loader": "^2.0.0",
     "ts-node": "^2.0.0",
-    "typescript": "^2.2.1",
+    "typescript": "^2.1.5",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "webpack": "^2.1.0-beta.27"
