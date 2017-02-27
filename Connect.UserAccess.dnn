@@ -1,0 +1,33 @@
+<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <package name="Connect.UserAccess" type="PersonaBar" version="01.00.00">
+      <friendlyName>Connect.UserAccess</friendlyName>
+      <description>Personabar extension to manage users' access to the site</description>
+      <iconFile>~/DesktopModules/admin/Dnn.PersonaBar/images/module_icon_32x32.png</iconFile>
+      <owner>
+        <name>DNN Connect</name>
+        <organization>DNN Connect</organization>
+        <url>http://www.dnnsoftware.com</url>
+        <email>support@dnnsoftware.com</email>
+      </owner>
+      <dependencies>
+        <dependency type="CoreVersion">09.00.00</dependency>
+        <dependency type="ManagedPackage" version="01.00.00">Dnn.PersonaBar.UI</dependency>
+      </dependencies>
+      <azureCompatible>true</azureCompatible>
+      <components>
+        <component type="PersonaBarMenu">
+          <menu>
+            <identifier>Connect.UserAccess</identifier>
+            <moduleName>UserAccess</moduleName>
+            <resourceKey>nav_UserAccess</resourceKey>
+            <path>UserAccess</path>
+            <mobileSupport>true</mobileSupport>
+            <parent>Manage</parent>
+            <order>15</order>
+          </menu>
+        </component>
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>
