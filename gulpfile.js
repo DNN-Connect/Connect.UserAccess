@@ -44,15 +44,16 @@ gulp.task('assemblyInfo', function () {
 });
 
 gulp.task('build', ['assemblyInfo'], function () {
-    return gulp.src('./UserAccess.csproj')
+    var outDir = path.join(__dirname, config.dnn.pathToAssemblies);
+    return gulp.src('./Connect.UserAccess/Connect.UserAccess.csproj')
         .pipe(msbuild({
-            toolsVersion: 12.0,
+            toolsVersion: 14.0,
             targets: ['Clean', 'Build'],
             errorOnFail: true,
             stdout: true,
             properties: {
                 Configuration: 'Release',
-                OutputPath: config.dnn.pathToAssemblies
+                OutputPath: outDir
             }
         }));
 });
@@ -60,31 +61,29 @@ gulp.task('build', ['assemblyInfo'], function () {
 gulp.task('packageInstall', ['build'], function () {
     var packageName = config.dnn.fullName + '_' + config.version;
     var dirFilter = filter(fileTest);
-    return merge(
-        merge(
+    var resources = merge(
             gulp.src([
-                '**/*.html',
-                '**/*.resx'
+                '*.html',
+                'App_LocalResources/*.resx',
+                'fonts/*.*',
+                'scripts/**/*.min.js'
             ], {
                     base: '.'
-                })
-                .pipe(dirFilter),
-            gulp.src(['**/*.css'], {
+                }),
+            gulp.src(['css/UserAccess.css'], {
                 base: '.'
             })
-                .pipe(minifyCss())
-                .pipe(dirFilter),
-            gulp.src(['js/*.js', '!js/*.min.js'], {
+                .pipe(minifyCss()),
+            gulp.src(['scripts/**/*.js', '!scripts/**/*.min.js'], {
                 base: '.'
             })
-                .pipe(uglify().on('error', gutil.log)),
-            gulp.src(['js/*.min.js'], {
-                base: '.'
-            })
+                .pipe(uglify().on('error', gutil.log))
         )
-            .pipe(zip('Resources.zip')),
-        gulp.src(config.dnn.pathToSupplementaryFiles + '/*.dnn')
-            .pipe(manifest(config)),
+            .pipe(zip('Resources.zip'));
+    return merge(
+        resources,
+        manifest(config, './_Installation/Connect.UserAccess.dnn')
+         .pipe(rename('Connect.UserAccess.dnn')),
         gulp.src([config.dnn.pathToAssemblies + '/*.dll',
         config.dnn.pathToScripts + '/*.SqlDataProvider',
         config.dnn.pathToSupplementaryFiles + '/License.txt',
@@ -96,6 +95,7 @@ gulp.task('packageInstall', ['build'], function () {
     )
         .pipe(zip(packageName + '_Install.zip'))
         .pipe(gulp.dest(config.dnn.packagesPath));
+
 });
 
 gulp.task('packageSource', ['build'], function () {
