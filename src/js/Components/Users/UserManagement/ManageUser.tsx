@@ -89,7 +89,7 @@ export class ManageUser extends React.Component<IManageUserProps, IManageUserSta
     }
 
     changeRoleGroup(e: HTMLSelectElement) {
-        var newGroupId = parseInt(e.options[e.selectedIndex].value);
+        var newGroupId = parseInt((e.options[e.selectedIndex] as any).value);
         this.setState({
             retrievingRoles: true
         } as IManageUserState, () => {
@@ -163,30 +163,30 @@ export class ManageUser extends React.Component<IManageUserProps, IManageUserSta
                             <div className="row">
                                 <div className="col-sm-12">
                                     <dl className="dl-horizontal">
-                                        <dt>Username</dt>
+                                        <dt>{this.props.localization.get("Username")}</dt>
                                         <dd>{this.state.user.Username}</dd>
-                                        <dt>Email</dt>
+                                        <dt>{this.props.localization.get("Email")}</dt>
                                         <dd>{this.state.user.Email}</dd>
-                                        <dt>Authorised</dt>
+                                        <dt>{this.props.localization.get("Authorized")}</dt>
                                         <dd>
                                             <CheckBox propertyName="Authorised"
                                                 value={this.state.user.Authorised}
                                                 onClick={(prop: string, val: boolean) => this.toggleUserProperty(prop, val)} />
                                         </dd>
-                                        <dt>Deleted</dt>
+                                        <dt>{this.props.localization.get("Deleted")}</dt>
                                         <dd>
                                             <CheckBox propertyName="IsDeleted"
                                                 value={this.state.user.IsDeleted}
                                                 onClick={(prop: string, val: boolean) => this.toggleUserProperty(prop, val)} />
                                         </dd>
-                                        <dt>Locked Out</dt>
+                                        <dt>{this.props.localization.get("LockedOut")}</dt>
                                         <dd>
                                             <CheckBox propertyName="LockedOut"
                                                 value={this.state.user.LockedOut}
                                                 stableValue={false}
                                                 onClick={(prop: string, val: boolean) => this.toggleUserProperty(prop, val)} />
                                         </dd>
-                                        <dt>UpdatePassword</dt>
+                                        <dt>{this.props.localization.get("MustUpdatePassword")}</dt>
                                         <dd>
                                             <CheckBox propertyName="UpdatePassword"
                                                 value={this.state.user.UpdatePassword}
