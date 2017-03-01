@@ -9669,11 +9669,11 @@ var UserManagementGrid = (function (_super) {
             if (data.length > 0) {
                 data.unshift({
                     RoleGroupID: -1,
-                    RoleGroupName: "Global Roles"
+                    RoleGroupName: _this.localization.get("GlobalRoles")
                 });
                 data.unshift({
                     RoleGroupID: -2,
-                    RoleGroupName: "All Roles"
+                    RoleGroupName: _this.localization.get("AllRoles")
                 });
             }
             _this.setState({

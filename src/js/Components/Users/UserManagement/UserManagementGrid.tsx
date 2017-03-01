@@ -69,11 +69,11 @@ export class UserManagementGrid extends React.Component<IUserManagementGridProps
             if (data.length > 0) {
                 data.unshift({
                     RoleGroupID: -1,
-                    RoleGroupName: "Global Roles"
+                    RoleGroupName: this.localization.get("GlobalRoles")
                 });
                 data.unshift({
                     RoleGroupID: -2,
-                    RoleGroupName: "All Roles"
+                    RoleGroupName: this.localization.get("AllRoles")
                 });
             }
             this.setState({

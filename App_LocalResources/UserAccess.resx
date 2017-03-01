@@ -117,7 +117,76 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Authorized.Text" xml:space="preserve">
+    <value>Authorized</value>
+  </data>
+  <data name="Close.Text" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Deleted.Text" xml:space="preserve">
+    <value>Deleted</value>
+  </data>
+  <data name="DisplayRows.Text" xml:space="preserve">
+    <value>Display Rows</value>
+  </data>
+  <data name="Email.Text" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="LockedOut.Text" xml:space="preserve">
+    <value>Locked Out</value>
+  </data>
+  <data name="MustEnterPassword.Text" xml:space="preserve">
+    <value>You must enter a password</value>
+  </data>
+  <data name="MustUpdatePassword.Text" xml:space="preserve">
+    <value>Must Update Password</value>
+  </data>
   <data name="nav_UserAccess.Text" xml:space="preserve">
     <value>User Access</value>
+  </data>
+  <data name="NewPassword.Text" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="PasswordChanged.Text" xml:space="preserve">
+    <value>Password has been changed</value>
+  </data>
+  <data name="RetrievingData.Text" xml:space="preserve">
+    <value>Retrieving Data</value>
+  </data>
+  <data name="Role.Text" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="Search.Text" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SetPassword.Text" xml:space="preserve">
+    <value>Set Password</value>
+  </data>
+  <data name="Status.Text" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Total.Text" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="Username.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="AllRoles.Text" xml:space="preserve">
+    <value>All Roles</value>
+  </data>
+  <data name="DisplayName.Text" xml:space="preserve">
+    <value>Display Name</value>
+  </data>
+  <data name="FirstName.Text" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="GlobalRoles.Text" xml:space="preserve">
+    <value>Global Roles</value>
+  </data>
+  <data name="LastName.Text" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="UserId.Text" xml:space="preserve">
+    <value>User ID</value>
   </data>
 </root>

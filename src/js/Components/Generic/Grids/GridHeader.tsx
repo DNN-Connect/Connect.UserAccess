@@ -5,7 +5,6 @@ import { Localization } from "../../../Localization";
 interface IGridHeaderProps {
     header: IGridColumn;
     localization: Localization;
-    key: string;
     sortColumn: string;
     sortOrder: string;
     sortHeader: (columnName: string, sortDirection: string) => void;
