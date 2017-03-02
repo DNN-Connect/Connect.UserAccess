@@ -106,4 +106,8 @@ js/*.js
 packages
 .vscode
 .vs
-_*
+_BuildSupport
+_Development
+_Packages
+_References
+
