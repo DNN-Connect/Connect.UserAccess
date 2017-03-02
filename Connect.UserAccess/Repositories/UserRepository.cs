@@ -19,7 +19,7 @@ namespace Connect.DNN.PersonaBar.UserAccess.Repositories
             using (var context = DataContext.Instance())
             {
                 var repo = context.GetRepository<UserBase>();
-                return repo.Find(pageIndex, pageSize, string.Format("WHERE PortalId = {0} AND (DisplayName LIKE '%{1}%' OR LastName LIKE '%{1}%' OR FirstName LIKE '%{1}%' OR Email LIKE '%{1}%') ORDER BY {2} {3}", portalId, searchText, orderByField, sortOrder));
+                return repo.Find(pageIndex, pageSize, string.Format("WHERE PortalId = {0} AND (DisplayName LIKE '%{1}%' OR LastName LIKE '%{1}%' OR FirstName LIKE '%{1}%' OR Email LIKE '%{1}%' OR Username LIKE '%{1}%') ORDER BY {2} {3}", portalId, searchText, orderByField, sortOrder));
             }
         }
         public User GetUser(int portalId, int userId)
