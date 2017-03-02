@@ -22211,18 +22211,37 @@ var __extends = (this && this.__extends) || (function () {
 ;
 var CheckBox = (function (_super) {
     __extends(CheckBox, _super);
-    function CheckBox() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function CheckBox(props) {
+        var _this = _super.call(this, props) || this;
+        _this.state = {
+            updating: false
+        };
+        return _this;
     }
     CheckBox.prototype.clicked = function (e) {
-        if (this.props.stableValue == undefined || this.props.stableValue != this.props.value) {
-            this.props.onClick(this.props.propertyName, !this.props.value);
+        var _this = this;
+        if ((this.props.stableValue == undefined || this.props.stableValue != this.props.value) && !this.state.updating) {
+            this.setState({
+                updating: true
+            }, function () {
+                _this.props.onClick(_this.props.propertyName, !_this.props.value);
+            });
         }
+    };
+    CheckBox.prototype.componentWillReceiveProps = function (nextProps) {
+        this.setState({
+            updating: false
+        });
     };
     CheckBox.prototype.render = function () {
         var _this = this;
         var chkBoxClass = "glyphicon glyphicon-";
-        chkBoxClass += this.props.value ? "check" : "unchecked";
+        if (this.state.updating) {
+            chkBoxClass += "refresh";
+        }
+        else {
+            chkBoxClass += this.props.value ? "check" : "unchecked";
+        }
         var style = {};
         if (this.props.stableValue == undefined || this.props.stableValue != this.props.value) {
             style = {
