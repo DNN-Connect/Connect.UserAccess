@@ -56,6 +56,16 @@ export class ManageUser extends React.Component<IManageUserProps, IManageUserSta
         })
     }
 
+    resetpassWord(e: any): void {
+        e.preventDefault();
+        DataService.resetPw(this.state.user.UserId, (data: any) => {
+            alert(this.props.localization.get("PasswordReset"));
+            this.refs.txtNewPassword.value = '';
+        }, (error: string) => {
+            alert(error);
+        });
+    }
+
     setpassWord(e: any): void {
         e.preventDefault();
         if (this.refs.txtNewPassword.value == '') {
@@ -151,17 +161,6 @@ export class ManageUser extends React.Component<IManageUserProps, IManageUserSta
                         <div className="modal-body">
                             <div className="row">
                                 <div className="col-sm-12">
-                                    <div className="form-inline">
-                                        <div className="form-group">
-                                            <input type="text" className="form-control" ref="txtNewPassword" placeholder={this.props.localization.get("NewPassword")} width="300" />
-                                        </div>
-                                        <div className="form-group">&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                                        <button type="submit" className="btn btn-default" onClick={this.setpassWord.bind(this)}>{this.props.localization.get("SetPassword")}</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-sm-12">
                                     <dl className="dl-horizontal">
                                         <dt>{this.props.localization.get("Username")}</dt>
                                         <dd>{this.state.user.Username}</dd>
@@ -193,6 +192,22 @@ export class ManageUser extends React.Component<IManageUserProps, IManageUserSta
                                                 onClick={(prop: string, val: boolean) => this.toggleUserProperty(prop, val)} />
                                         </dd>
                                     </dl>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-sm-3">
+                                    <strong>{this.props.localization.get("Password")} :</strong>
+                                </div>
+                                <div className="col-sm-2">
+                                    <button type="submit" className="btn btn-default" onClick={e => this.resetpassWord(e)}>{this.props.localization.get("ResetPassword")}</button>
+                                </div>
+                                <div className="col-sm-7">
+                                    <div className="input-group">
+                                        <input type="text" className="form-control" ref="txtNewPassword" placeholder={this.props.localization.get("NewPassword")} width="300" />
+                                        <div className="input-group-btn">
+                                            <button type="submit" className="btn btn-default" onClick={e => this.setpassWord(e)}>{this.props.localization.get("SetPassword")}</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             {groupDropdown}

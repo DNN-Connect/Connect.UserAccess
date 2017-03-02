@@ -19,6 +19,10 @@ export class DataService {
         const sf = this.getServiceFramework("UserAccess");
         sf.get("GetUser", { userId: userId }, success, fail);
     }
+    public static resetPw(userId: number, success: Function, fail?: Function) {
+        const sf = this.getServiceFramework("UserAccess");
+        sf.post("ResetPw", { userId: userId }, success, fail);
+    }
 	public static searchUsers(searchText: string, orderByField: string, sortOrder: string, pageIndex: number, pageSize: number, success: Function, fail?: Function): void {
         const sf = this.getServiceFramework("UserAccess");
         sf.get("Search", { searchText: searchText, orderByField: orderByField, sortOrder: sortOrder, pageIndex: pageIndex, pageSize: pageSize }, success, fail);

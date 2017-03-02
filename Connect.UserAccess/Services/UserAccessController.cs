@@ -17,7 +17,7 @@ namespace Connect.DNN.PersonaBar.UserAccess.Services
     [MenuPermission(MenuName = "Connect.UserAccess", Scope = ServiceScope.Admin)]
     public class UserAccessController : PersonaBarApiController
     {
-        const string SharedResourceFileName = "";
+        const string SharedResourceFileName = "DesktopModules/admin/Dnn.PersonaBar/Modules/Connect.UserAccess/App_LocalResources/UserAccess.resx";
         [HttpGet]
         public HttpResponseMessage Search(string searchText, string orderByField, string sortOrder, int pageIndex, int pageSize)
         {
@@ -68,20 +68,33 @@ namespace Connect.DNN.PersonaBar.UserAccess.Services
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, Localization.GetString("UserNotFound", SharedResourceFileName));
             try
             {
-                string resetPassword = UserController.ResetPassword(user, string.Empty);
-                if (!UserController.ChangePassword(user, resetPassword, data.npw))
+                if (!UserController.ResetAndChangePassword(user, data.npw))
                 {
                     return Request.CreateResponse(HttpStatusCode.InternalServerError, Localization.GetString("CouldNotChangePassword", SharedResourceFileName));
                 }
                 else
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK, "");
+                    return Request.CreateResponse(HttpStatusCode.OK);
                 }
             }
             catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, Localization.GetString("CouldNotChangePassword", SharedResourceFileName));
             }
+        }
+        public class ResetPwDTO
+        {
+            public int userId { get; set; }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public HttpResponseMessage ResetPw(ResetPwDTO data)
+        {
+            UserInfo user = UserController.GetUserById(PortalId, data.userId);
+            if (user == null)
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, Localization.GetString("UserNotFound", SharedResourceFileName));
+            UserController.ResetPasswordToken(user, true);
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
         public class UserPropertyDTO
         {

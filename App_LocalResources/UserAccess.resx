@@ -160,7 +160,7 @@
     <value>Search</value>
   </data>
   <data name="SetPassword.Text" xml:space="preserve">
-    <value>Set Password</value>
+    <value>Set</value>
   </data>
   <data name="Status.Text" xml:space="preserve">
     <value>Status</value>
@@ -188,5 +188,20 @@
   </data>
   <data name="UserId.Text" xml:space="preserve">
     <value>User ID</value>
+  </data>
+  <data name="UserNotFound.Text" xml:space="preserve">
+    <value>User not found</value>
+  </data>
+  <data name="CouldNotChangePassword.Text" xml:space="preserve">
+    <value>Could not change password. Maybe because it didn't satisfy security criteria, or because it is one of the user's old password.</value>
+  </data>
+  <data name="PasswordReset.Text" xml:space="preserve">
+    <value>Password reset email sent.</value>
+  </data>
+  <data name="ResetPassword.Text" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Password.Text" xml:space="preserve">
+    <value>Password</value>
   </data>
 </root>

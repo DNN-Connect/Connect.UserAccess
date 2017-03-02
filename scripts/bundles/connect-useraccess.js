@@ -9567,6 +9567,10 @@ var DataService = (function () {
         var sf = this.getServiceFramework("UserAccess");
         sf.get("GetUser", { userId: userId }, success, fail);
     };
+    DataService.resetPw = function (userId, success, fail) {
+        var sf = this.getServiceFramework("UserAccess");
+        sf.post("ResetPw", { userId: userId }, success, fail);
+    };
     DataService.searchUsers = function (searchText, orderByField, sortOrder, pageIndex, pageSize, success, fail) {
         var sf = this.getServiceFramework("UserAccess");
         sf.get("Search", { searchText: searchText, orderByField: orderByField, sortOrder: sortOrder, pageIndex: pageIndex, pageSize: pageSize }, success, fail);
@@ -22294,6 +22298,16 @@ var ManageUser = (function (_super) {
             });
         });
     };
+    ManageUser.prototype.resetpassWord = function (e) {
+        var _this = this;
+        e.preventDefault();
+        __WEBPACK_IMPORTED_MODULE_3__Service__["a" /* DataService */].resetPw(this.state.user.UserId, function (data) {
+            alert(_this.props.localization.get("PasswordReset"));
+            _this.refs.txtNewPassword.value = '';
+        }, function (error) {
+            alert(error);
+        });
+    };
     ManageUser.prototype.setpassWord = function (e) {
         var _this = this;
         e.preventDefault();
@@ -22374,13 +22388,6 @@ var ManageUser = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "modal-body" },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "row" },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-12" },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-inline" },
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
-                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { type: "text", className: "form-control", ref: "txtNewPassword", placeholder: this.props.localization.get("NewPassword"), width: "300" })),
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" }, "\u00A0\u00A0\u00A0\u00A0"),
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { type: "submit", className: "btn btn-default", onClick: this.setpassWord.bind(this) }, this.props.localization.get("SetPassword"))))),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "row" },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-12" },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("dl", { className: "dl-horizontal" },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("dt", null, this.props.localization.get("Username")),
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("dd", null, this.state.user.Username),
@@ -22398,6 +22405,18 @@ var ManageUser = (function (_super) {
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("dt", null, this.props.localization.get("MustUpdatePassword")),
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("dd", null,
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__CheckBox__["a" /* CheckBox */], { propertyName: "UpdatePassword", value: this.state.user.UpdatePassword, onClick: function (prop, val) { return _this.toggleUserProperty(prop, val); } }))))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "row" },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-3" },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("strong", null,
+                                    this.props.localization.get("Password"),
+                                    " :")),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-2" },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { type: "submit", className: "btn btn-default", onClick: function (e) { return _this.resetpassWord(e); } }, this.props.localization.get("ResetPassword"))),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-7" },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "input-group" },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { type: "text", className: "form-control", ref: "txtNewPassword", placeholder: this.props.localization.get("NewPassword"), width: "300" }),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "input-group-btn" },
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { type: "submit", className: "btn btn-default", onClick: function (e) { return _this.setpassWord(e); } }, this.props.localization.get("SetPassword")))))),
                         groupDropdown,
                         roles),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "modal-footer" },
