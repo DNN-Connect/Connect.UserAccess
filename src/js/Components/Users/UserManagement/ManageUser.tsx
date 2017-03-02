@@ -194,7 +194,7 @@ export class ManageUser extends React.Component<IManageUserProps, IManageUserSta
                                     </dl>
                                 </div>
                             </div>
-                            <div className="row">
+                            <div className="row space-below">
                                 <div className="col-sm-3">
                                     <strong>{this.props.localization.get("Password")} :</strong>
                                 </div>

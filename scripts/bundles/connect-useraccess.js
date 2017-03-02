@@ -22405,7 +22405,7 @@ var ManageUser = (function (_super) {
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("dt", null, this.props.localization.get("MustUpdatePassword")),
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("dd", null,
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__CheckBox__["a" /* CheckBox */], { propertyName: "UpdatePassword", value: this.state.user.UpdatePassword, onClick: function (prop, val) { return _this.toggleUserProperty(prop, val); } }))))),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "row" },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "row space-below" },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-3" },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("strong", null,
                                     this.props.localization.get("Password"),
