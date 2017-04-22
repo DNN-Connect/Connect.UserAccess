@@ -7,6 +7,10 @@ export class DataService {
         sf.controller = controller;
         return sf;
     }
+    public static getMobileLink(success: Function, fail?: Function): void {
+        const sf = this.getServiceFramework("UserAccess");
+        sf.get("MobileLink", {}, success, fail);
+    }
     public static getRoleGroups(success: Function, fail?: Function): void {
         const sf = this.getServiceFramework("UserAccess");
         sf.get("RoleGroups", {}, success, fail);

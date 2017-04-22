@@ -163,5 +163,22 @@ namespace Connect.DNN.PersonaBar.UserAccess.Services
             }
             return Request.CreateResponse(HttpStatusCode.OK, res);
         }
+        public class MobileLinkDTO
+        {
+            public string Host { get; set; }
+            public string Scheme { get; set; }
+            public string Username { get; set; }
+        }
+        [HttpGet]
+        public HttpResponseMessage MobileLink()
+        {
+            var res = new MobileLinkDTO
+            {
+                Host = PortalSettings.PortalAlias.HTTPAlias,
+                Scheme = PortalSettings.ActiveTab.IsSecure ? "https" : "http",
+                Username = UserInfo.Username
+            };
+            return Request.CreateResponse(HttpStatusCode.OK, res);
+        }
     }
 }

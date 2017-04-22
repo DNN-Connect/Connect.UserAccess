@@ -7,6 +7,7 @@ import { IRole } from "../../../Models/Role";
 import { IRoleGroup } from "../../../Models/RoleGroup";
 import { UserManagementGridRow } from "./UserManagementGridRow";
 import { ManageUser } from "./ManageUser";
+import { QrCode } from "./QrCode";
 import { DataService } from "../../../Service";
 import { Localization } from "../../../Localization";
 
@@ -35,6 +36,7 @@ export class UserManagementGrid extends React.Component<IUserManagementGridProps
         ddPageSize: any;
         txtSearch: any;
         manageDialog: ManageUser;
+        qrDialog: QrCode;
     }
     constructor(props: IUserManagementGridProps) {
         super(props);
@@ -154,6 +156,11 @@ export class UserManagementGrid extends React.Component<IUserManagementGridProps
         this.refs.manageDialog.show(user);
     }
 
+    onShowQr(e: any): void {
+        e.preventDefault();
+        this.refs.qrDialog.show();
+    }
+
     public componentDidUpdate(s1: IUserManagementGridState, s2: IUserManagementGridState, s3: IUserManagementGridState): void {
         if (this.state.searchTextChanged) {
             this.search();
@@ -163,7 +170,7 @@ export class UserManagementGrid extends React.Component<IUserManagementGridProps
     public render(): JSX.Element {
         var rows = this.state.data.map((user: IUser) => {
             return <UserManagementGridRow User={user} key={user.UserId.toString()}
-                OnManageUser={(user: IUser, e:any) => this.onManageUser(user, e)} />;
+                OnManageUser={(user: IUser, e: any) => this.onManageUser(user, e)} />;
         });
         var that = this;
         var headers = this.state.columns.map((item) => {
@@ -183,10 +190,10 @@ export class UserManagementGrid extends React.Component<IUserManagementGridProps
                     <div className="col-xs-12 col-sm-4 form-inline">
                         <div className="form-group">
                             <label>{this.localization.get("DisplayRows")}</label>&nbsp;
-                            <select className="form-control" 
-                                    onChange={this.changePageSize.bind(this)} 
-                                    value={this.state.pageSize}
-                                    ref="ddPageSize">
+                            <select className="form-control"
+                                onChange={this.changePageSize.bind(this)}
+                                value={this.state.pageSize}
+                                ref="ddPageSize">
                                 {ddSizes}
                             </select>
                         </div>
@@ -240,7 +247,14 @@ export class UserManagementGrid extends React.Component<IUserManagementGridProps
                     </div>
                 </div>
                 <ManageUser localization={this.localization}
-                     roleGroups={this.state.roleGroups} ref="manageDialog" />
+                    roleGroups={this.state.roleGroups} ref="manageDialog" />
+                <div className="div-right">
+                    <a href="#" className="btn btn-info btn-sm user-access-mobile"
+                    onClick={(e) => {this.onShowQr(e)}}>
+                        <i className="glyphicon glyphicon-qrcode"></i>
+                    </a>
+                </div>
+                <QrCode localization={this.localization} ref="qrDialog" />
             </div>
         );
     }

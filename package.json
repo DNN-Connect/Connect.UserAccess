@@ -47,6 +47,7 @@
   },
   "homepage": "https://github.com/Connect/UserAccess#readme",
   "devDependencies": {
+    "@types/node": "^7.0.13",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
     "bootstrap": "^3.3.7",
@@ -75,5 +76,8 @@
     "vinyl-source-stream": "^1.1.0",
     "webpack": "^2.1.0-beta.27"
   },
-  "dependencies": {}
+  "dependencies": {
+    "qrcode-generator": "^1.2.0",
+    "qrcode.react": "^0.6.1"
+  }
 }

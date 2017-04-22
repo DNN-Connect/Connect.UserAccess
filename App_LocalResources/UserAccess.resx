@@ -204,4 +204,7 @@
   <data name="Password.Text" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="Mobile.Text" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
 </root>
