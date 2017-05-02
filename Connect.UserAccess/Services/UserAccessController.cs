@@ -50,7 +50,7 @@ namespace Connect.DNN.PersonaBar.UserAccess.Services
             }
             else
             {
-                UserRepository.Instance.DeleteUserRole(data.userId, data.userId);
+                UserRepository.Instance.DeleteUserRole(data.userId, data.roleId);
             }
             return Request.CreateResponse(HttpStatusCode.OK, UserRepository.Instance.GetRoles(PortalId, data.userId, data.roleGroupId));
         }
