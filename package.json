@@ -1,83 +1,83 @@
 {
-  "name": "useraccess",
-  "version": "01.00.00",
-  "description": "UserAccess personabar extension for DNN",
-  "dnn": {
-    "projectType": "personabar",
-    "fullName": "Connect.UserAccess",
-    "friendlyName": "UserAccess PersonaBar",
-    "packageName": "Connect_UserAccess",
-    "folder": "admin/Dnn.PersonaBar/Modules/Connect.UserAccess",
-    "owner": {
-      "name": "Peter Donker",
-      "organization": "DNN Connect Association",
-      "url": "http://dnn-connect.org.org",
-      "email": "info@dnn-connect.org"
+    "name": "useraccess",
+    "version": "01.00.02",
+    "description": "UserAccess personabar extension for DNN",
+    "dnn": {
+        "projectType": "personabar",
+        "fullName": "Connect.UserAccess",
+        "friendlyName": "UserAccess PersonaBar",
+        "packageName": "Connect_UserAccess",
+        "folder": "admin/Dnn.PersonaBar/Modules/Connect.UserAccess",
+        "owner": {
+            "name": "Peter Donker",
+            "organization": "DNN Connect Association",
+            "url": "http://dnn-connect.org.org",
+            "email": "info@dnn-connect.org"
+        },
+        "module": {
+            "packageName": "Connect_UserAccess",
+            "folderName": "Connect/UserAccess",
+            "azureCompatible": "true",
+            "iconFile": "DesktopModules\\Connect\\UserAccess\\useraccess.png"
+        },
+        "tempPath": "./package",
+        "packagesPath": "./_Packages",
+        "pathToAssemblies": "./bin",
+        "pathToScripts": "./_Installation/SQL",
+        "pathToSupplementaryFiles": "./_Installation",
+        "excludeFilter": [
+            "node_modules",
+            "bin",
+            "obj"
+        ]
     },
-    "module": {
-      "packageName": "Connect_UserAccess",
-      "folderName": "Connect/UserAccess",
-      "azureCompatible": "true",
-      "iconFile": "DesktopModules\\Connect\\UserAccess\\useraccess.png"
+    "main": "index.js",
+    "scripts": {
+        "build": "node_modules\\.bin\\webpack --progress --colors",
+        "watch": "node_modules\\.bin\\webpack --progress --colors --watch"
     },
-    "tempPath": "./package",
-    "packagesPath": "./_Packages",
-    "pathToAssemblies": "./bin",
-    "pathToScripts": "./_Installation/SQL",
-    "pathToSupplementaryFiles": "./_Installation",
-    "excludeFilter": [
-      "node_modules",
-      "bin",
-      "obj"
-    ]
-  },
-  "main": "index.js",
-  "scripts": {
-    "build": "node_modules\\.bin\\webpack --progress --colors",
-    "watch": "node_modules\\.bin\\webpack --progress --colors --watch"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Connect/UserAccess.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Connect/UserAccess/issues"
-  },
-  "homepage": "https://github.com/Connect/UserAccess#readme",
-  "devDependencies": {
-    "@types/node": "^7.0.13",
-    "babel-preset-es2015": "^6.22.0",
-    "babel-preset-react": "^6.22.0",
-    "bootstrap": "^3.3.7",
-    "gulp": "^3.9.1",
-    "gulp-dnn-manifest": "^0.2.1",
-    "gulp-dotnet-assembly-info": "^0.1.12",
-    "gulp-filter": "^5.0.0",
-    "gulp-less": "^3.3.0",
-    "gulp-markdown": "^1.2.0",
-    "gulp-minify-css": "^1.2.4",
-    "gulp-msbuild": "^0.4.3",
-    "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^2.0.1",
-    "gulp-util": "^3.0.8",
-    "gulp-zip": "^3.0.2",
-    "less": "^2.7.2",
-    "less-plugin-clean-css": "^1.5.1",
-    "merge2": "^0.3.6",
-    "path": "^0.12.7",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "ts-loader": "^2.0.0",
-    "ts-node": "^2.0.0",
-    "typescript": "^2.1.5",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "webpack": "^2.1.0-beta.27"
-  },
-  "dependencies": {
-    "qrcode-generator": "^1.2.0",
-    "qrcode.react": "^0.6.1"
-  }
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Connect/UserAccess.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Connect/UserAccess/issues"
+    },
+    "homepage": "https://github.com/Connect/UserAccess#readme",
+    "devDependencies": {
+        "@types/node": "^7.0.13",
+        "babel-preset-es2015": "^6.22.0",
+        "babel-preset-react": "^6.22.0",
+        "bootstrap": "^3.3.7",
+        "gulp": "^3.9.1",
+        "gulp-dnn-manifest": "^0.2.1",
+        "gulp-dotnet-assembly-info": "^0.1.12",
+        "gulp-filter": "^5.0.0",
+        "gulp-less": "^3.3.0",
+        "gulp-markdown": "^1.2.0",
+        "gulp-minify-css": "^1.2.4",
+        "gulp-msbuild": "^0.4.3",
+        "gulp-rename": "^1.2.2",
+        "gulp-uglify": "^2.0.1",
+        "gulp-util": "^3.0.8",
+        "gulp-zip": "^3.0.2",
+        "less": "^2.7.2",
+        "less-plugin-clean-css": "^1.5.1",
+        "merge2": "^0.3.6",
+        "path": "^0.12.7",
+        "react": "^15.4.2",
+        "react-dom": "^15.4.2",
+        "ts-loader": "^2.0.0",
+        "ts-node": "^2.0.0",
+        "typescript": "^2.1.5",
+        "vinyl-buffer": "^1.0.0",
+        "vinyl-source-stream": "^1.1.0",
+        "webpack": "^2.1.0-beta.27"
+    },
+    "dependencies": {
+        "qrcode-generator": "^1.2.0",
+        "qrcode.react": "^0.6.1"
+    }
 }
