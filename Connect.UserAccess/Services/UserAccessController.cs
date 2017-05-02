@@ -165,6 +165,7 @@ namespace Connect.DNN.PersonaBar.UserAccess.Services
         }
         public class MobileLinkDTO
         {
+            public string PortalName { get; set; }
             public string Host { get; set; }
             public string Scheme { get; set; }
             public string Username { get; set; }
@@ -174,6 +175,7 @@ namespace Connect.DNN.PersonaBar.UserAccess.Services
         {
             var res = new MobileLinkDTO
             {
+                PortalName = PortalSettings.PortalName,
                 Host = PortalSettings.PortalAlias.HTTPAlias,
                 Scheme = PortalSettings.ActiveTab.IsSecure ? "https" : "http",
                 Username = UserInfo.Username
